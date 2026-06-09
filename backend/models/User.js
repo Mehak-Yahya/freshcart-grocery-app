@@ -36,6 +36,54 @@ const userSchema = new mongoose.Schema(
       type: String,
       sparse: true,
     },
+
+    // Rider-specific fields
+    isAvailable: {
+      type: Boolean,
+      default: false,
+    },
+
+    vehicleType: {
+      type: String,
+      enum: ["bike", "car", "van"],
+      sparse: true,
+    },
+
+    vehicleNumber: {
+      type: String,
+      sparse: true,
+    },
+
+    cnic: {
+      type: String,
+      sparse: true,
+    },
+
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
+
+    todayEarnings: {
+      type: Number,
+      default: 0,
+    },
+
+    totalEarnings: {
+      type: Number,
+      default: 0,
+    },
+
+    completedDeliveries: {
+      type: Number,
+      default: 0,
+    },
+
+    currentLocation: {
+      latitude: Number,
+      longitude: Number,
+      updatedAt: Date,
+    },
   },
   {
     timestamps: true,
