@@ -48,9 +48,13 @@ export function AdminProducts() {
   };
 
   const handleEdit = (product) => {
-    localStorage.setItem("freshcartProductDraft", JSON.stringify(product));
-    navigate("/dashboard/admin");
-  };
+  localStorage.setItem(
+    "freshcartProductDraft",
+    JSON.stringify(product)
+  );
+
+  navigate("/dashboard/admin/products/new");
+};
 
   const handleDelete = async (productId) => {
     const confirmDelete = window.confirm("Delete this product?");
