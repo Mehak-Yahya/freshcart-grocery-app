@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema(
       sparse: true,
     },
 
-    // Rider-specific fields
+    // Rider fields
     isAvailable: {
       type: Boolean,
       default: false,
