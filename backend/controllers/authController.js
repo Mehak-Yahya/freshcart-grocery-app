@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { auth } from "../config/firebaseAdmin.js";
 
 export const registerUser = async (req, res) => {
   try {
@@ -132,6 +133,71 @@ export const loginUser = async (req, res) => {
     console.error("Login error:", error);
     res.status(500).json({
       message: "Server error during login",
+    });
+  }
+};
+export const googleLogin = async (req, res) => {
+  try {
+    const { token } = req.body;
+
+    console.log("Google login attempt, token received:", token?.substring(0, 20) + "...");
+
+    if (!token) {
+      return res.status(400).json({
+        message: "Token is required",
+      });
+    }
+
+    let decoded;
+    try {
+      decoded = await auth.verifyIdToken(token);
+      console.log("Token verified, email:", decoded.email);
+    } catch (tokenError) {
+      console.error("Token verification error:", tokenError.message);
+      return res.status(401).json({
+        message: "Invalid or expired token",
+      });
+    }
+
+    const email = decoded.email;
+
+    const user = await User.findOne({
+      email: email.toLowerCase(),
+    });
+
+    if (!user) {
+      console.log("User not found for email:", email);
+      return res.status(404).json({
+        message: "Account not found. Register first.",
+      });
+    }
+
+    console.log("User found, role:", user.role);
+
+    const jwtToken = jwt.sign(
+      {
+        id: user._id,
+        role: user.role,
+      },
+      process.env.JWT_SECRET || "freshcart_secret",
+      {
+        expiresIn: "7d",
+      }
+    );
+
+    res.status(200).json({
+      token: jwtToken,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
+    });
+  } catch (error) {
+    console.error("Google login error:", error);
+    res.status(500).json({
+      message: "Google authentication failed",
     });
   }
 };
