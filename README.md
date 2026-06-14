@@ -1,10 +1,10 @@
-# 🛒 FreshCart Grocery App
+# FreshCart Grocery App
 
 FreshCart is a full-stack **MERN Grocery Delivery System** with **role-based authentication**, **3 dashboards (Admin, Rider, Customer)**, **Firebase Google Sign-In**, and **Nodemailer password reset system**.
 
 ---
 
-## 🚀 Features
+## Features
 
 ###  Authentication System
 - Role-based registration:
