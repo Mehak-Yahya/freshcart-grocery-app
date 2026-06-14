@@ -356,7 +356,6 @@
 
 /*******************view product page*************************/
 
-
 .admin-products-page {
   width: 100%;
   padding: 0px 20px 20px;
@@ -368,7 +367,7 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-
+/* LINKS */
 .admin-products-page a {
   display: inline-block;
   margin-bottom: 10px;
@@ -381,24 +380,27 @@
   text-decoration: underline;
 }
 
+/* TITLE */
 .admin-products-page h2 {
   font-size: 1.6rem;
   margin: 10px 0 20px;
   color: #ffffff;
-  text-shadow: 
+
+  text-shadow:
     0 2px 10px rgba(0, 0, 0, 0.8),
     0 4px 20px rgba(0, 0, 0, 0.6),
     0 0 30px rgba(79, 70, 229, 0.3);
-
 }
 
-
+/* GRID */
 .product-grid-admin {
   display: grid;
   grid-template-columns: repeat(4, 260px);
   gap: 73px;
   justify-content: start;
 }
+
+/* CARD */
 .product-card {
   width: 320px;
   flex-shrink: 0;
@@ -406,13 +408,17 @@
   background: #ffffff;
   border-radius: 16px;
   border: 1px solid #eef0f3;
+
   overflow: hidden;
 
   display: flex;
   flex-direction: column;
 
+  height: 100%; /* equal height fix */
+
   transition: 0.2s ease;
 }
+
 .product-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
@@ -425,49 +431,68 @@
   object-fit: cover;
 }
 
-
+/* BODY (MAIN ALIGNMENT FIX) */
 .product-body {
   padding: 14px;
+
   display: flex;
   flex-direction: column;
-  gap: 6px;
+
+  flex: 1;
+  color: #111827; /* FIX: ensures text is visible */
 }
 
+/* CATEGORY */
 .product-category {
   font-size: 0.75rem;
   font-weight: 600;
   color: #6b7280;
   text-transform: uppercase;
+  margin: 0;
 }
 
+/* TITLE (FIXED VISIBILITY ISSUE) */
 .product-body h3 {
   font-size: 1rem;
-  color: #111827;
+  color: #111827 !important;
+  font-weight: 600;
+  margin: 0;
 }
 
+/* DESCRIPTION */
 .product-body p {
   font-size: 0.85rem;
   color: #6b7280;
-  min-height: 34px;
+
+  min-height: 40px;
+
+  overflow: hidden;
+  margin: 0;
 }
 
+/* PRICE */
 .product-body strong {
   font-size: 1.1rem;
   color: #111827;
+  margin: 0;
 }
 
+/* QUANTITY */
 .product-quantity {
   font-size: 0.8rem;
   color: #9ca3af;
+  margin: 0;
 }
 
-
+/* ACTIONS (BUTTON ALIGNMENT FIX) */
 .product-card-actions {
   display: flex;
   gap: 10px;
-  margin-top: 10px;
+
+  margin-top: auto; /* keeps buttons aligned at bottom */
 }
 
+/* BUTTONS */
 .product-card-actions button {
   flex: 1;
   padding: 10px;
@@ -480,7 +505,6 @@
 
   transition: 0.2s ease;
 }
-
 
 .product-card-actions button:first-child {
   background: #884e69;
@@ -500,6 +524,7 @@
   background: #884e69;
 }
 
+/* EMPTY STATE */
 .empty-state {
   width: 100%;
   text-align: center;
@@ -511,7 +536,7 @@
 
 .dashboard-panel-orders {
   width: 100%;
-  padding: 40px;
+  padding: 20px;
 
   background: rgba(255, 255, 255, 0.45);
   backdrop-filter: blur(14px);
@@ -546,10 +571,10 @@
 }
 
 .orders-table th {
-  padding: 14px 12px;
+  padding: 10px 8px;
   text-align: left;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -563,8 +588,8 @@
 
 
 .orders-table td {
-  padding: 16px 12px;
-  font-size: 0.9rem;
+  padding: 10px 8px;
+  font-size: 0.85rem;
 }
 
 .order-id {
@@ -665,6 +690,7 @@
 .order-products-list {
   max-width: 250px;
   
+  
 }
 
 .product-item-row {
@@ -692,7 +718,7 @@
 
 .product-item-info {
   flex: 1;
-  
+  font-size: small;
 }
 
 .product-item-info strong {
@@ -862,12 +888,26 @@
 }
 
 .order-card-images {
-  margin-top: 8px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 4px;
-}
+    display: flex;
+  gap: 8px;
+  align-items: center;
 
+  flex-wrap: wrap;
+
+  max-width: 180px;
+}
+.order-product-name {
+  font-size: 10px;
+  color: #374151;
+
+  max-width: 42px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  text-align: center;
+  margin-top: 2px;
+}
 .order-product-thumb {
   width: 40px;
   height: 40px;
@@ -882,7 +922,7 @@
   bottom: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.6);
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 1px 3px;
   border-radius: 2px;
   font-size: 0.65rem;
