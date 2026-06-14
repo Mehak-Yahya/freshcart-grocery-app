@@ -48,13 +48,10 @@ export function AdminProducts() {
   };
 
   const handleEdit = (product) => {
-  localStorage.setItem(
-    "freshcartProductDraft",
-    JSON.stringify(product)
-  );
+    localStorage.setItem("freshcartProductDraft", JSON.stringify(product));
 
-  navigate("/dashboard/admin/products/new");
-};
+    navigate("/dashboard/admin/products/new");
+  };
 
   const handleDelete = async (productId) => {
     const confirmDelete = window.confirm("Delete this product?");
@@ -80,10 +77,8 @@ export function AdminProducts() {
   return (
     <div className="dashboard-page dashboard-admin">
       <AdminNavbar />
-     
-      <section className="admin-products-page">
-      <Link to="/dashboard/admin"> BACK </Link>
 
+      <section className="admin-products-page">
         <h2>Products you added</h2>
         <div className="product-grid product-grid-admin">
           {products.length === 0 ? (
@@ -97,16 +92,23 @@ export function AdminProducts() {
                   className="product-image"
                 />
                 <div className="product-body">
-                  <span className="product-category">{product.category || "Grocery"}</span>
+                  <span className="product-category">
+                    {product.category || "Grocery"}
+                  </span>
                   <h3>{product.name}</h3>
                   <p>{product.description}</p>
                   <strong>Rs {product.price}</strong>
-                  <span className="product-quantity">Qty {product.quantity ?? 1}</span>
+                  <span className="product-quantity">
+                    Qty {product.quantity ?? 1}
+                  </span>
                   <div className="product-card-actions">
                     <button type="button" onClick={() => handleEdit(product)}>
                       Edit
                     </button>
-                    <button type="button" onClick={() => handleDelete(product._id)}>
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(product._id)}
+                    >
                       Delete
                     </button>
                   </div>

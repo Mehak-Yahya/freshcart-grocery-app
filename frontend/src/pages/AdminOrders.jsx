@@ -125,7 +125,7 @@ export function AdminOrders() {
                               )}
                               <div className="product-item-info">
                                 <strong>{item.name}</strong>
-                                <div style={{ fontSize: "0.8rem", color: "#000000" }}>
+                                <div style={{ fontSize: "0.7rem", color: "#000000" }}>
                                   Qty: {item.quantity} × Rs {item.price}
                                 </div>
                               </div>

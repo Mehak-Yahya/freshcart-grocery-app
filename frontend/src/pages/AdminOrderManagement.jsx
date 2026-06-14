@@ -133,20 +133,28 @@ export function AdminOrderManagement() {
                       <div className="order-card-info">
                         <p><strong style={{color: '#111827'}}>Rs {order.totalAmount?.toFixed(2)}</strong></p>
                         <p>{order.items?.length || 0} items</p>
-                        <div className="order-card-images">
-                          {order.items && order.items.slice(0, 4).map((item, idx) => (
-                            <div key={idx} style={{ position: "relative" }}>
-                              <img
-                                src={item.product?.imageUrl || fallbackImage}
-                                alt={item.name}
-                                className="order-product-thumb"
-                                onError={(e) => { e.target.src = fallbackImage; }}
-                              />
-                              {item.quantity > 1 && (
-                                <span className="order-product-qty">×{item.quantity}</span>
-                              )}
-                            </div>
-                          ))}
+                 <div className="order-card-images">
+  {order.items && order.items.slice(0, 4).map((item, idx) => (
+    <div key={idx} className="order-product-mini">
+
+      <img
+        src={item.product?.imageUrl || fallbackImage}
+        alt={item.product?.name}
+        className="order-product-thumb"
+        onError={(e) => { e.target.src = fallbackImage; }}
+      />
+
+      <span className="order-product-name">
+        {item.product?.name}
+      </span>
+
+      {item.quantity > 1 && (
+        <span className="order-product-qty">×{item.quantity}</span>
+      )}
+
+    </div>
+  ))}
+
                           {order.items && order.items.length > 4 && (
                             <div style={{
                               width: "40px",
