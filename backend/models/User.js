@@ -78,7 +78,13 @@ const userSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-
+// PASSWORD RESET FIELDS
+resetToken: {
+  type: String,
+},
+resetTokenExpire: {
+  type: Date,
+},
     currentLocation: {
       latitude: Number,
       longitude: Number,

@@ -31,13 +31,14 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
       enum: [
+        "Grocery",
         "Fruits",
         "Vegetables",
         "Dairy",
         "Bakery",
         "Beverages",
         "Snacks",
-        "Grocery",
+        
       ],
       default: "Grocery",
       trim: true,
