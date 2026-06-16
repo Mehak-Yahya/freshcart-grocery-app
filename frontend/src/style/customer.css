@@ -156,7 +156,7 @@
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 24px;
+  gap: 67px;
 }
 
 .product-card {
@@ -207,7 +207,7 @@
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
 
   overflow: hidden;
-
+gap: 12px;
   display: flex;
   flex-direction: column;
 
