@@ -151,5 +151,5 @@ npm run server
 
 ---
 ## Contact
-📩 Email: mehakyahya81@gmail.com
+📩 Email: kandhirmehak@gmail.com
 💼 Open for freelance & collaboration opportunities
